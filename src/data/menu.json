@@ -1,0 +1,53 @@
+[
+  {
+    "category": "Coffee",
+    "note": "Single-origin, roasted in-house every Tuesday",
+    "items": [
+      { "name": "Espresso", "description": "Chikmagalur washed arabica, chocolate & orange peel", "price": 180 },
+      { "name": "Flat White", "description": "Double ristretto, silk-steamed milk", "price": 240 },
+      { "name": "Pour Over", "description": "Rotating estate lot, brewed to order — ask what's on", "price": 320 },
+      { "name": "Cold Brew Tonic", "description": "18-hour steep, artisanal tonic, grapefruit", "price": 340 },
+      { "name": "Affogato", "description": "Vanilla bean gelato drowned in a double shot", "price": 360 }
+    ]
+  },
+  {
+    "category": "Morning",
+    "note": "Served till noon",
+    "items": [
+      { "name": "Miso Butter Eggs", "description": "Soft scramble, house sourdough, chives", "price": 420 },
+      { "name": "Ricotta Hotcakes", "description": "Burnt honey, seasonal fruit, mascarpone", "price": 460 },
+      { "name": "Shakshuka", "description": "Slow tomatoes, baked eggs, zhoug, grilled pita", "price": 440 },
+      { "name": "Granola Bowl", "description": "House granola, coconut yogurt, mango, cacao nib", "price": 380 }
+    ]
+  },
+  {
+    "category": "Plates",
+    "note": "Noon onwards",
+    "items": [
+      { "name": "Burrata & Peaches", "description": "Basil oil, aged balsamic, grilled ciabatta", "price": 560 },
+      { "name": "Goan Prawn Orzo", "description": "Rechado butter, cherry tomatoes, lemon crumb", "price": 640 },
+      { "name": "Mushroom Rigatoni", "description": "Three-mushroom ragù, pecorino, black pepper", "price": 540 },
+      { "name": "Slow Pork Belly", "description": "Kokum glaze, burnt apple, mustard greens", "price": 720 },
+      { "name": "Charred Cauliflower", "description": "Miso tahini, pickled raisins, almond dukkah", "price": 480 }
+    ]
+  },
+  {
+    "category": "Bakery",
+    "note": "Baked at 5 AM, gone by 4 PM",
+    "items": [
+      { "name": "Croissant", "description": "72-hour laminated, French butter", "price": 220 },
+      { "name": "Pain au Chocolat", "description": "Dark 64% couverture", "price": 260 },
+      { "name": "Sourdough Loaf", "description": "Whole wheat levain — take one home", "price": 340 },
+      { "name": "Kouign-Amann", "description": "Caramelised, unapologetic", "price": 280 }
+    ]
+  },
+  {
+    "category": "Dessert",
+    "note": "Worth staying for",
+    "items": [
+      { "name": "Basque Cheesecake", "description": "Burnt top, molten centre", "price": 420 },
+      { "name": "Dark Chocolate Tart", "description": "Sea salt, olive oil, crème fraîche", "price": 440 },
+      { "name": "Seasonal Sorbet", "description": "Whatever the market gave us this week", "price": 300 }
+    ]
+  }
+]
