@@ -38,12 +38,26 @@ function CircleBadge({ text }: { text: string }) {
     <svg viewBox="0 0 120 120" className="spin-slow h-28 w-28 sm:h-36 sm:w-36">
       <defs>
         <path id="circ" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0" />
+        <linearGradient id="chrome-rail" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--chrome-hi)" />
+          <stop offset="50%" stopColor="var(--chrome-mid)" />
+          <stop offset="100%" stopColor="var(--lido)" />
+        </linearGradient>
       </defs>
-      <circle cx="60" cy="60" r="58" fill="var(--butter)" stroke="var(--ink)" strokeWidth="2.5" />
-      <text className="fill-[--ink] text-[13.5px] font-bold uppercase tracking-[0.22em]">
+      {/* aperitivo porthole: chrome rim, lido face */}
+      <circle cx="60" cy="60" r="58" fill="url(#chrome-rail)" stroke="var(--marine)" strokeWidth="2.5" />
+      <circle cx="60" cy="60" r="51" fill="var(--lido)" stroke="var(--marine)" strokeWidth="1.5" />
+      <text className="fill-[var(--marine)] text-[13.5px] font-bold uppercase tracking-[0.22em]">
         <textPath href="#circ">{text}</textPath>
       </text>
-      <text x="60" y="66" textAnchor="middle" className="fill-[--ink] text-[20px]">☕</text>
+      {/* citrus-slice center */}
+      <circle cx="60" cy="60" r="24" fill="var(--aperol)" stroke="var(--marine)" strokeWidth="2.5" />
+      <path
+        d="M60 60 L82 60 M60 60 L38 60 M60 60 L60 82 M60 60 L60 38 M60 60 L75.6 75.6 M60 60 L44.4 44.4 M60 60 L75.6 44.4 M60 60 L44.4 75.6"
+        stroke="var(--lido)"
+        strokeWidth="2"
+      />
+      <circle cx="60" cy="60" r="4.5" fill="var(--lido)" stroke="var(--marine)" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -51,27 +65,32 @@ function CircleBadge({ text }: { text: string }) {
 const MANIFESTO = ["Good beans.", "Real butter.", "No shortcuts."];
 
 const CRAFT = [
-  { emoji: "🔥", title: "Roast", desc: "Single-estate beans, roasted small every Tuesday", bg: "var(--tomato)", rot: "-3deg", light: true },
-  { emoji: "🥐", title: "Bake", desc: "72-hour laminates from a 5 AM oven", bg: "var(--butter)", rot: "2deg", light: false },
-  { emoji: "🍳", title: "Cook", desc: "A short menu the morning market writes", bg: "var(--pistachio)", rot: "-2deg", light: false },
-  { emoji: "☕", title: "Pour", desc: "Slow bar — pour overs, cold brew, affogato", bg: "#fff", rot: "3deg", light: false },
+  { emoji: "☀️", title: "Roast", desc: "Single-estate beans, roasted small every Tuesday", bg: "var(--sky)", rot: "-3deg", light: false },
+  { emoji: "🥐", title: "Bake", desc: "72-hour laminates from a 5 AM oven", bg: "var(--limoncello)", rot: "2deg", light: false },
+  { emoji: "🍋", title: "Cook", desc: "A short menu the morning market writes", bg: "var(--lido)", rot: "-2deg", light: false },
+  { emoji: "☕", title: "Pour", desc: "Slow bar — pour overs, cold brew, affogato", bg: "var(--marine)", rot: "3deg", light: true },
 ];
 
-/* Day scene: sky colors interpolate continuously between these stops */
+/* Day scene: night-swim water deepens continuously between these stops */
 const MOMENTS = [
-  { time: "05:00", title: "The ovens wake first", body: "Laminated dough goes in before sunrise. By seven the room smells like butter.", bg: "#f7d4dd" },
-  { time: "07:30", title: "First pour", body: "Doors open. Regulars don't order — they nod. The machine finds its rhythm.", bg: "#ffd98a" },
-  { time: "12:30", title: "The kitchen takes over", body: "Plates leave the pass in waves. Lunch runs long here and nobody minds.", bg: "#c8e3a4" },
-  { time: "19:00", title: "Golden hour", body: "Lights drop, vinyl goes on, dessert outsells coffee. Stay for the cheesecake.", bg: "#f3b183" },
+  { time: "05:00", cap: "first swim", title: "The ovens wake first", body: "Laminated dough goes in before sunrise. By seven the room smells like butter.", bg: "#134e63" },
+  { time: "07:30", cap: "granita o'clock", title: "First pour", body: "Doors open. Regulars don't order — they nod. The machine finds its rhythm.", bg: "#10475c" },
+  { time: "12:30", cap: "aperitivo ora", title: "The kitchen takes over", body: "Plates leave the pass in waves. Lunch runs long here and nobody minds.", bg: "#0c3a4a" },
+  { time: "19:00", cap: "night swim", title: "Golden hour", body: "Lights drop, vinyl goes on, dessert outsells coffee. Stay for the cheesecake.", bg: "#07242e" },
 ];
+
+/* splash curtain: piscina panel leads, marine panel trails ~80ms behind */
+const SPLASH_CURTAIN = "linear-gradient(180deg, var(--piscina) 0 90%, var(--marine) 90% 100%)";
 
 const ROOM = [
-  { src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=80", cap: "The counter", rot: "-3deg", curtain: "var(--tomato)" },
-  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1400&q=80", cap: "The window seats", rot: "2.5deg", curtain: "var(--butter)" },
-  { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1400&q=80", cap: "The pass", rot: "-1.5deg", curtain: "var(--pistachio)" },
+  { src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=80", cap: "The counter", rot: "-3deg", curtain: SPLASH_CURTAIN },
+  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1400&q=80", cap: "The window seats", rot: "2.5deg", curtain: SPLASH_CURTAIN },
+  { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1400&q=80", cap: "The pass", rot: "-1.5deg", curtain: SPLASH_CURTAIN },
 ];
 
-const TICKER = ["Croissants", "Flat whites", "Sourdough", "Cold brew", "Cheesecake", "Vinyl nights"];
+const TICKER = ["APERITIVO", "ESPRESSO FREDDO", "GRANITA DI CAFFÈ", "DIVE IN", "SALT & CITRUS", "POOLSIDE", "DAL 1962"];
+
+const COORDS = "41.23° N — 2.11° E";
 
 /* 05:00 → 19:00 as continuous minutes, snapped to 5 */
 function formatDayTime(p: number): string {
@@ -80,6 +99,17 @@ function formatDayTime(p: number): string {
   const h = Math.floor(snapped / 60);
   const m = snapped % 60;
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+/* decorative pool-light caustic for dark scenes */
+function Caustic({ className }: { className: string }) {
+  return (
+    <div
+      aria-hidden
+      className={`caustic pointer-events-none absolute ${className}`}
+      style={{ background: "radial-gradient(closest-side, rgba(111,214,207,0.07), transparent 70%)" }}
+    />
+  );
 }
 
 export default function HomeStory({ signatures }: { signatures: Signature[] }) {
@@ -322,6 +352,19 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
           stagger: 0.05,
           scrollTrigger: { trigger: ".epilogue", start: "top 70%" },
         });
+
+        /* ——— Caustic drift: pool light in the dark scenes (decorative only) ——— */
+        gsap.utils.toArray<HTMLElement>(".caustic").forEach((el, i) => {
+          gsap.to(el, {
+            x: "+=60",
+            y: "-=40",
+            duration: 14,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+            delay: i * 1.7,
+          });
+        });
       }, root);
 
       return () => ctx.revert();
@@ -331,23 +374,59 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const band = (bg: string, rotate: string, textClass: string) => (
-    <div className="overflow-hidden py-6" style={{ transform: `rotate(${rotate})`, margin: "0 -2rem" }}>
-      <div className="band-drift will-change-transform">
-        <div className="marquee border-y-[2.5px] border-[--ink] py-3" style={{ background: bg }}>
-          {[false, true].map((hidden) => (
-            <div key={String(hidden)} className="marquee-track" aria-hidden={hidden}>
-              {TICKER.map((item, i) => (
-                <span key={`${item}-${i}`} className={`font-display whitespace-nowrap text-2xl sm:text-4xl ${textClass}`}>
-                  {item} <span className="mx-4">✷</span>
-                </span>
-              ))}
-            </div>
-          ))}
+  const band = (variant: "light" | "dark", rotate: string) => {
+    const dark = variant === "dark";
+    const chromeRule = (
+      <div
+        aria-hidden
+        style={{ height: "1.5px", background: "linear-gradient(90deg, var(--chrome-hi), var(--chrome-mid), var(--lido))" }}
+      />
+    );
+    const sep = (i: number) =>
+      i % 3 === 1 ? (
+        <span
+          aria-hidden
+          className={`mx-4 inline-block h-[0.9em] w-[0.9em] rounded-full border-[2.5px] bg-[var(--aperol)] align-middle ${
+            dark ? "border-[rgba(238,247,244,0.4)]" : "border-[var(--marine)]"
+          }`}
+        />
+      ) : (
+        <span aria-hidden className={`mx-4 ${dark ? "text-[var(--piscina)]" : "text-[var(--marine)]"}`}>
+          {i % 3 === 0 ? "✺" : "◠"}
+        </span>
+      );
+    return (
+      <div className="overflow-hidden py-6" style={{ transform: `rotate(${rotate})`, margin: "0 -2rem" }}>
+        <div className="band-drift will-change-transform">
+          {dark && chromeRule}
+          <div
+            className={`marquee py-3 ${dark ? "" : "border-y-[2.5px] border-[var(--marine)]"}`}
+            style={{
+              background: dark
+                ? "var(--abyss)"
+                : "repeating-linear-gradient(90deg, var(--sky) 0 56px, var(--lido) 56px 112px)",
+            }}
+          >
+            {[false, true].map((hidden) => (
+              <div key={String(hidden)} className="marquee-track" aria-hidden={hidden}>
+                {TICKER.map((item, i) => (
+                  <span
+                    key={`${item}-${i}`}
+                    className={`font-display whitespace-nowrap text-2xl sm:text-4xl ${
+                      dark ? "outline-text-dark" : i % 2 ? "outline-text" : "text-[var(--marine)]"
+                    }`}
+                  >
+                    {item} {sep(i)}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+          {dark && chromeRule}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div ref={root}>
@@ -357,18 +436,19 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
       <section className="relative overflow-hidden px-4 pb-10 pt-32 sm:px-6 sm:pt-40">
         <span className="float-shape absolute left-[8%] top-40 text-5xl">🥐</span>
         <span className="float-shape absolute right-[12%] top-56 text-4xl">☕</span>
-        <span className="float-shape absolute left-[18%] top-[520px] hidden text-4xl sm:block">🍰</span>
-        <span className="float-shape absolute right-[6%] top-[420px] h-8 w-8 rounded-full bg-[--tomato]" />
-        <span className="float-shape absolute left-[45%] top-36 h-5 w-5 rounded-full bg-[--pistachio]" />
+        <span className="float-shape absolute left-[18%] top-[520px] hidden text-4xl sm:block">🍋</span>
+        <span className="float-shape absolute right-[6%] top-[420px] h-8 w-8 rounded-full bg-[var(--aperol)]" />
+        <span className="float-shape absolute left-[45%] top-36 h-5 w-5 rounded-full bg-[var(--piscina)]" />
 
         <div className="mx-auto max-w-[1500px]">
-          <p className="label mb-4 text-center">A café in Assagao, Goa — est. 2019</p>
+          <p className="label mb-4 text-center">Open all summer — cold espresso, colder water.</p>
           <h1 className="font-display text-center text-[19vw] uppercase leading-[0.85] sm:text-[13.5vw]">
             <Chars text={siteConfig.name} className="hero-char" />
           </h1>
-          <p className="font-display mt-2 text-center text-[6vw] text-[--tomato] sm:text-[3vw]">
+          <p className="font-display mt-2 text-center text-[6vw] text-[var(--aperol)] sm:text-[3vw]">
             <Chars text="coffee & kitchen" className="hero-char" />
           </p>
+          <div aria-hidden className="shimmerline mx-auto mt-5 w-48 sm:w-72" />
 
           {/* full-width container, scaled down then grown via transform only */}
           <div
@@ -376,8 +456,8 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
             className="relative mx-auto mt-10 w-full will-change-transform"
             style={{ transform: "scale(0.72)", transformOrigin: "50% 20%" }}
           >
-            <div ref={heroImg} className="hero-frame sticker overflow-hidden !rounded-[2.5rem] bg-white">
-              <div className="relative aspect-[16/8]">
+            <div ref={heroImg} className="hero-frame sticker overflow-hidden !rounded-[2.5rem] bg-[var(--lido)]">
+              <div className="curtain-wrap relative aspect-[16/8]">
                 <Image
                   src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=2400&q=80"
                   alt="Inside Meridian at golden hour"
@@ -389,7 +469,7 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
               </div>
             </div>
             <div className="absolute -right-2 -top-10 sm:right-6">
-              <CircleBadge text="FRESH DAILY ✷ SINCE 2019 ✷ " />
+              <CircleBadge text="APERITIVO ORA — MERIDIAN LIDO — " />
             </div>
           </div>
 
@@ -403,7 +483,10 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
       {/* ————— MANIFESTO: text-fill wipes ————— */}
       <section className="px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-[1500px]">
-          <p className="label">The whole philosophy</p>
+          <p className="label">
+            The whole philosophy<span className="opacity-60"> · {COORDS}</span>
+          </p>
+          <div aria-hidden className="shimmerline mt-3 w-16" />
           <h2 className="font-display mt-6 text-[11vw] uppercase leading-[0.95] sm:text-[7.5vw]">
             {MANIFESTO.map((line) => (
               <span key={line} className="fill-line">
@@ -417,16 +500,19 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
         </div>
       </section>
 
-      {band("var(--tomato)", "-2deg", "text-white")}
+      {band("light", "-2deg")}
 
       {/* ————— THE CRAFT ————— */}
       <section className="px-4 py-20 sm:px-6">
-        <div className="blob-section mx-auto max-w-[1500px] bg-[--butter] px-6 py-16 sm:px-14 sm:py-24">
-          <p className="label">Chapter one</p>
+        <div className="blob-section mx-auto max-w-[1500px] bg-[var(--piscina)] px-6 py-16 sm:px-14 sm:py-24">
+          <p className="label">
+            Chapter one<span className="opacity-60"> · {COORDS}</span>
+          </p>
+          <div aria-hidden className="shimmerline mt-3 w-16" />
           <h2 className="font-display mt-4 max-w-3xl text-4xl uppercase sm:text-7xl">
             Four things.
             <br />
-            Zero shortcuts.
+            Zero <span className="accent-italic">shortcuts.</span>
           </h2>
           <div className="craft-grid tilt-wrap mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {CRAFT.map((item) => (
@@ -436,10 +522,10 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
                 style={{ background: item.bg, transform: `rotate(${item.rot})` }}
               >
                 <span className="craft-emoji text-4xl">{item.emoji}</span>
-                <h3 className={`font-display tilt-pop mt-4 text-3xl ${item.light ? "text-white" : ""}`}>
+                <h3 className={`font-display tilt-pop mt-4 text-3xl ${item.light ? "text-[var(--lido)]" : ""}`}>
                   {item.title}
                 </h3>
-                <p className={`mt-2 text-sm font-medium leading-relaxed ${item.light ? "text-white/85" : "opacity-70"}`}>
+                <p className={`mt-2 text-sm font-medium leading-relaxed ${item.light ? "text-[rgba(238,247,244,0.85)]" : "opacity-70"}`}>
                   {item.desc}
                 </p>
               </div>
@@ -449,20 +535,30 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
       </section>
 
       {/* ————— PINNED DISHES ————— */}
-      <section ref={dishesPin} className="relative overflow-hidden bg-[--cocoa] text-[--cream]">
+      <section
+        ref={dishesPin}
+        className="relative overflow-hidden text-[var(--lido)]"
+        style={{ background: "linear-gradient(180deg, var(--abyss) 0%, var(--ripple) 100%)" }}
+      >
+        <Caustic className="-left-[12vw] top-[8vh] h-[62vw] w-[62vw]" />
+        <Caustic className="-right-[18vw] bottom-[4vh] h-[68vw] w-[68vw]" />
         <p ref={ghostDish} className="ghost-dish font-display text-[14vw] uppercase leading-none" />
         <div className="relative flex h-svh flex-col justify-center">
           <div className="mx-auto w-full max-w-[1500px] px-4 sm:px-6">
             <div className="mb-8 flex items-end justify-between">
               <div>
-                <p className="label text-[--butter]">Chapter two — the table</p>
+                <p className="label text-[var(--piscina)]">
+                  Chapter two — the table
+                  <span className="text-[rgba(238,247,244,0.6)]"> · {COORDS}</span>
+                </p>
+                <div aria-hidden className="shimmerline mt-3 w-16" />
                 <h2 className="font-display mt-3 text-4xl uppercase sm:text-6xl">
-                  The greatest hits
+                  The greatest <span className="accent-italic">hits</span>
                 </h2>
               </div>
-              <p className="font-display text-5xl tabular-nums text-[--butter] sm:text-7xl">
+              <p className="font-display text-5xl tabular-nums text-[var(--aperol)] sm:text-7xl">
                 <span ref={dishCounter}>1</span>
-                <span className="text-2xl opacity-50">/{signatures.length}</span>
+                <span className="text-2xl text-[rgba(238,247,244,0.4)]">/{signatures.length}</span>
               </p>
             </div>
           </div>
@@ -471,7 +567,7 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
               {signatures.map((dish, i) => (
                 <div
                   key={dish.name}
-                  className="dish-card tilt-card sticker relative w-[76vw] shrink-0 overflow-visible bg-[--cream] text-[--ink] sm:w-[36vw] lg:w-[26vw]"
+                  className="dish-card tilt-card dark-card relative w-[76vw] shrink-0 overflow-visible text-[var(--lido)] sm:w-[36vw] lg:w-[26vw]"
                   style={{ transform: `rotate(${i % 2 ? 1.2 : -1.2}deg)` }}
                 >
                   <div className="card-window relative aspect-[4/3] overflow-hidden rounded-t-[1.4rem]">
@@ -482,9 +578,21 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
                         fill
                         sizes="(max-width: 768px) 90vw, 32vw"
                         className="object-cover"
+                        style={{ filter: "saturate(0.8) contrast(1.1) brightness(0.92)" }}
                       />
                     </div>
-                    <span className="label absolute left-3 top-3 rounded-full border-2 border-[--ink] bg-[--pistachio] px-3 py-1">
+                    {/* moonlit-water grade */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 z-[1]"
+                      style={{ background: "linear-gradient(180deg, rgba(7,36,46,0.45), rgba(16,71,92,0.30))", mixBlendMode: "multiply" }}
+                    />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 z-[1]"
+                      style={{ background: "linear-gradient(180deg, rgba(111,214,207,0.14), transparent 40%)", mixBlendMode: "screen" }}
+                    />
+                    <span className="label absolute left-3 top-3 z-[2] rounded-full border-2 border-[var(--marine)] bg-[var(--piscina)] px-3 py-1 text-[var(--marine)]">
                       {dish.category}
                     </span>
                   </div>
@@ -498,7 +606,7 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
                     </p>
                     <div className="card-reveal">
                       <div>
-                        <p className="label mt-3 border-t-2 border-dotted border-[--ink]/25 pt-3 text-[--tomato]">
+                        <p className="label mt-3 border-t-2 border-dotted border-[rgba(238,247,244,0.25)] pt-3 text-[var(--piscina)]">
                           Order at the counter →
                         </p>
                       </div>
@@ -508,7 +616,7 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
               ))}
               <div className="flex w-[20vw] shrink-0 items-center">
                 <Magnetic>
-                  <Link href="/menu" className="pill-btn bg-[--butter] px-8 py-4 text-[--ink]">
+                  <Link href="/menu" className="pill-btn bg-[var(--limoncello)] px-8 py-4 text-[var(--marine)]">
                     Full menu →
                   </Link>
                 </Magnetic>
@@ -518,40 +626,56 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
         </div>
       </section>
 
-      {/* ————— ONE DAY HERE: full-screen sky ————— */}
+      {/* ————— ONE DAY HERE: full-screen night swim ————— */}
       <section
         ref={daySection}
-        className="relative overflow-hidden"
+        className="relative overflow-hidden text-[var(--lido)]"
         style={{ backgroundColor: MOMENTS[0].bg }}
       >
+        <Caustic className="-left-[16vw] top-[4vh] h-[64vw] w-[64vw]" />
+        <Caustic className="-right-[14vw] bottom-[2vh] h-[58vw] w-[58vw]" />
         {/* sun arcs across the whole viewport */}
         <div
           ref={sunArm}
           className="sun-arm"
           style={{ "--arc-r": "min(44vw, 620px)", transform: "rotate(-80deg)" } as React.CSSProperties}
         >
-          <span className="sun text-4xl sm:text-5xl">{moment === 3 ? "🌙" : "☀️"}</span>
+          <span
+            aria-hidden
+            className={`sun block${moment === 2 ? " golden" : ""}`}
+            style={{ width: 28, height: 28, borderRadius: 999, background: "var(--limoncello)" }}
+          />
         </div>
 
         <div className="relative mx-auto flex h-svh w-full max-w-[1500px] items-center px-4 sm:px-6">
           <div className="grid w-full gap-10 md:grid-cols-2">
             <div>
-              <p className="label">Chapter three — one day here</p>
-              <p className="font-display mt-6 text-[21vw] leading-none tabular-nums sm:text-[11rem]">
+              <p className="label">
+                Chapter three — one day here
+                <span className="text-[rgba(238,247,244,0.6)]"> · {COORDS}</span>
+              </p>
+              <div aria-hidden className="shimmerline mt-3 w-16" />
+              <p className="font-display mt-6 text-[21vw] leading-none tabular-nums text-[var(--aperol)] sm:text-[11rem]">
                 <span ref={clock}>05:00</span>
               </p>
-              <div className="squiggle mt-6 max-w-xs" />
+              <div className="squiggle-dark mt-6 max-w-xs" />
               <p className="label mt-6">Scroll to move the sun ↓</p>
             </div>
             <div className="flex flex-col justify-center">
               {MOMENTS.map((m, i) => (
                 <div
                   key={m.time}
-                  className={`border-b-2 border-[--ink]/15 py-4 transition-all duration-700 ${
+                  className={`py-4 transition-all duration-700 ${
                     i === moment ? "opacity-100" : "opacity-30"
                   }`}
                 >
-                  <h3 className="font-display text-2xl sm:text-3xl">{m.title}</h3>
+                  <span
+                    className="label inline-block rounded-full px-3 py-1 text-[var(--abyss)]"
+                    style={{ background: i === 2 ? "var(--aperol)" : i === 3 ? "var(--piscina)" : "var(--limoncello)" }}
+                  >
+                    {m.cap}
+                  </span>
+                  <h3 className="font-display mt-2 text-2xl sm:text-3xl">{m.title}</h3>
                   <div
                     className="grid transition-[grid-template-rows] duration-700 ease-out"
                     style={{ gridTemplateRows: i === moment ? "1fr" : "0fr" }}
@@ -562,6 +686,11 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
                       </p>
                     </div>
                   </div>
+                  <div
+                    aria-hidden
+                    className="mt-4"
+                    style={{ height: "1.5px", background: "linear-gradient(90deg, var(--chrome-hi), var(--chrome-mid), var(--lido))", opacity: 0.5 }}
+                  />
                 </div>
               ))}
             </div>
@@ -569,24 +698,33 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
         </div>
       </section>
 
-      {band("var(--butter)", "1.5deg", "outline-text")}
+      {band("dark", "1.5deg")}
 
       {/* ————— THE ROOM (curtain reveals) ————— */}
       <section className="px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-[1500px]">
-          <p className="label text-center">Chapter four — the room</p>
+          <p className="label text-center">
+            Chapter four — the room<span className="opacity-60"> · {COORDS}</span>
+          </p>
+          <div aria-hidden className="shimmerline mx-auto mt-3 w-16" />
           <h2 className="font-display mx-auto mt-4 max-w-3xl text-center text-4xl uppercase sm:text-6xl">
-            An old Goan house with very good light
+            An old Goan house with very good <span className="accent-italic">light</span>
           </h2>
           <div className="tilt-wrap mt-16 grid gap-8 sm:grid-cols-3">
-            {ROOM.map((img) => (
+            {ROOM.map((img, i) => (
               <figure
                 key={img.cap}
-                className="room-card tilt-card sticker overflow-hidden bg-white p-3 pb-5"
+                className="room-card tilt-card sticker overflow-hidden bg-[var(--lido)] p-3 pb-5"
                 style={{ transform: `rotate(${img.rot})` }}
               >
                 <div className="card-window curtain-wrap relative aspect-[4/5] overflow-hidden rounded-xl">
                   <Image src={img.src} alt={img.cap} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                  {/* striped-towel tint: odd tiles piscina, even tiles sky */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[1]"
+                    style={{ background: i % 2 ? "rgba(191,230,238,0.12)" : "rgba(111,214,207,0.12)", mixBlendMode: "multiply" }}
+                  />
                   <div className="curtain" style={{ background: img.curtain }} />
                 </div>
                 <figcaption className="tilt-pop pt-4 text-center text-sm font-bold">
@@ -600,28 +738,37 @@ export default function HomeStory({ signatures }: { signatures: Signature[] }) {
 
       {/* ————— EPILOGUE ————— */}
       <section className="epilogue px-4 pb-28 sm:px-6">
-        <div className="blob-section mx-auto max-w-[1500px] bg-[--tomato] px-6 py-20 text-center text-white sm:px-14 sm:py-28">
-          <p className="label text-white/80">The end (of the website)</p>
+        <div
+          className="blob-section relative mx-auto max-w-[1500px] overflow-hidden px-6 py-20 text-center text-[var(--lido)] sm:px-14 sm:py-28"
+          style={{ background: "linear-gradient(180deg, var(--abyss) 0%, var(--ripple) 100%)" }}
+        >
+          <Caustic className="-left-[10vw] -top-[6vh] h-[56vw] w-[56vw]" />
+          <Caustic className="-bottom-[8vh] -right-[12vw] h-[60vw] w-[60vw]" />
+          <p className="label text-[rgba(238,247,244,0.8)]">The end (of the website)</p>
           <h2 className="font-display mt-6 text-[13vw] uppercase leading-[0.9] sm:text-[7vw]">
             <Chars text="Come hungry." className="epi-char" />
           </h2>
-          <p className="mx-auto mt-6 max-w-md text-[15px] font-medium leading-relaxed text-white/90">
+          <p className="mx-auto mt-6 max-w-md text-[15px] font-medium leading-relaxed text-[rgba(238,247,244,0.9)]">
             The window seat is first-come. The cheesecake sells out. You have
             been warned, lovingly.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <Magnetic>
-              <Link href="/visit#reserve" className="pill-btn bg-[--butter] px-9 py-4 text-[--ink]">
-                Reserve a table
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <Link href="/menu" className="pill-btn bg-white px-9 py-4 text-[--ink]">
+              <Link
+                href="/menu"
+                className="pill-btn px-9 py-4"
+                style={{ background: "var(--aperol)", color: "var(--abyss)", border: "none", boxShadow: "6px 6px 0 rgba(111,214,207,0.35)" }}
+              >
                 Read the menu
               </Link>
             </Magnetic>
+            <Magnetic>
+              <Link href="/visit" className="pill-btn bg-[var(--lido)] px-9 py-4 text-[var(--marine)]">
+                Find us
+              </Link>
+            </Magnetic>
           </div>
-          <p className="label mt-10 text-white/80">
+          <p className="label mt-10 text-[rgba(238,247,244,0.8)]">
             {siteConfig.hours[0][0]} · {siteConfig.hours[0][1]} · {siteConfig.address.split(",")[0]}
           </p>
         </div>

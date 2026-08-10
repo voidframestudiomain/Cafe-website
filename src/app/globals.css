@@ -1,199 +1,351 @@
 @import "tailwindcss";
 
-:root {
-  --cream: #fff4e4;
-  --ink: #23180f;
-  --tomato: #ff5c39;
-  --butter: #ffc53d;
-  --pistachio: #b3d98c;
-  --cocoa: #2b1c10;
+/* ————————————————————————————————————————————————
+   LIDO MERIDIANA THEME
+   Sun-bleached sea-glass paper, marine ink, pool
+   aqua, chrome ladder rails — and exactly one hot
+   Campari-orange pop. Neo-brutalist bones; every
+   hard shadow recast as a water reflection.
+   ———————————————————————————————————————————————— */
+
+@theme {
+  --color-sand: #eef7f4;   /* page background — sun-bleached lido paper */
+  --color-shell: #bfe6ee;  /* tinted section band — pale sky wash */
+  --color-ocean: #0c3a4a;  /* marine ink (text) */
+  --color-deep: #07242e;   /* footer / midnight pool */
+  --color-sun: #ffd257;    /* limoncello — small accents only */
+  --color-coral: #ff6a3c;  /* aperol — THE hot pop */
+  --color-mint: #6fd6cf;   /* piscina — pool aqua, lead accent */
+  --color-sky: #bfe6ee;    /* pale sky wash */
+  --color-peach: #dfeef2;  /* chrome rail highlight */
+  --color-blush: #bfe6ee;  /* pale sky wash */
+  --color-ripple: #10475c; /* deep-water secondary */
 }
 
+:root {
+  /* Lido Meridiana palette */
+  --lido: #eef7f4;        /* sun-bleached paper; light bg; text on dark */
+  --marine: #0c3a4a;      /* universal ink: text, borders, strokes */
+  --piscina: #6fd6cf;     /* pool aqua — lead accent, reflection shadows */
+  --sky: #bfe6ee;         /* pale sky wash — alternating sections, hover shadows */
+  --limoncello: #ffd257;  /* sun accent — small chips only, never large surfaces */
+  --aperol: #ff6a3c;      /* THE hot pop — CTAs on dark, display accents on light */
+  --ripple: #10475c;      /* deep-water secondary for dark scenes */
+  --abyss: #07242e;       /* midnight pool — dark scene + loader bg */
+  --chrome-hi: #dfeef2;   /* chrome rail gradient stop */
+  --chrome-mid: #8fb7c4;  /* chrome rail gradient stop */
+
+  /* Legacy aliases — keep so existing bg-[--cocoa] etc. utilities in TSX keep working */
+  --cream: var(--lido);
+  --ink: var(--marine);
+  --tomato: var(--aperol);
+  --butter: var(--limoncello);
+  --pistachio: var(--piscina);
+  --cocoa: var(--abyss);
+}
+
+/* Lenis smooth scroll plumbing */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--lido);
+  color: var(--marine);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv11", "tnum";
+  font-feature-settings: "tnum";
   overflow-x: hidden;
+}
+
+::selection {
+  background: var(--piscina);
+  color: var(--marine);
+}
+
+:focus-visible {
+  outline: 3px solid var(--marine);
+  outline-offset: 2px;
 }
 
 /* ——— Type ——— */
 .font-display {
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.94;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 900;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
+}
+.font-display em {
+  color: var(--aperol);
+}
+.accent-italic {              /* the "aperitivo voice" */
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
 }
 
 .label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .outline-text {
+  -webkit-text-stroke: 2px var(--marine);
   color: transparent;
-  -webkit-text-stroke: 2px var(--ink);
+}
+.outline-text-dark {
+  -webkit-text-stroke: 2px rgba(111, 214, 207, 0.26);
+  color: transparent;
 }
 
-/* ——— Jolly building blocks ——— */
+/* ——— Building blocks (water-reflection shadows) ——— */
+.card-soft {
+  background: var(--lido);
+  border: 2.5px solid var(--marine);
+  border-radius: 1.75rem;
+  box-shadow: 6px 6px 0 var(--piscina);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-lift:hover {
+  transform: translate(-2px, -2px) rotate(0deg) !important;
+  box-shadow: 10px 10px 0 var(--sky);
+}
+
 .sticker {
-  border: 2.5px solid var(--ink);
+  border: 2.5px solid var(--marine);
   border-radius: 1.5rem;
-  box-shadow: 6px 6px 0 var(--ink);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 6px 6px 0 var(--piscina);   /* was ink — now a reflection */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .sticker:hover {
   transform: translate(-2px, -2px) rotate(0deg) !important;
-  box-shadow: 10px 10px 0 var(--ink);
+  box-shadow: 10px 10px 0 var(--sky);      /* ripples settling */
 }
 
 .pill-btn {
-  display: inline-block;
-  border: 2.5px solid var(--ink);
   border-radius: 999px;
-  box-shadow: 4px 4px 0 var(--ink);
-  font-weight: 700;
+  border: 2.5px solid var(--marine);
+  box-shadow: 4px 4px 0 var(--piscina);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.pill-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--ink);
-}
-.pill-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--ink);
+.pill-btn:hover  { box-shadow: 7px 7px 0 var(--sky); }
+.pill-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--piscina); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: rgba(238, 247, 244, 0.9);
+  backdrop-filter: blur(6px);
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 2px solid var(--marine);
+  box-shadow: 3px 3px 0 var(--piscina);
 }
 
-.blob-section {
-  border-radius: 3rem;
-}
-@media (min-width: 640px) {
-  .blob-section { border-radius: 4.5rem; }
-}
-
-/* ——— GSAP-ready states (set by JS; sensible static defaults) ——— */
-.char { display: inline-block; white-space: pre; }
-
-/* ——— Intro loader ——— */
-.intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
+.btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--cocoa);
-  color: var(--cream);
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.95rem 1.9rem;
+  font-weight: 700;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease;
+}
+.btn:hover { transform: translateY(-3px); filter: brightness(1.03); }
+.btn:active { transform: translateY(0); }
+
+.btn-coral {
+  background: var(--aperol);
+  color: var(--abyss);
+  border: 2.5px solid var(--marine);
+  box-shadow: 4px 4px 0 var(--piscina);
+}
+.btn-sun {
+  background: var(--limoncello);
+  color: var(--marine);
+  border: 2.5px solid var(--marine);
+  box-shadow: 4px 4px 0 var(--piscina);
+}
+.btn-ghost {
+  background: var(--lido);
+  color: var(--marine);
+  border: 2.5px solid var(--marine);
+  box-shadow: 4px 4px 0 var(--piscina);
+}
+.btn-coral:hover, .btn-sun:hover, .btn-ghost:hover { box-shadow: 7px 7px 0 var(--sky); }
+.btn-coral:active, .btn-sun:active, .btn-ghost:active { box-shadow: 1px 1px 0 var(--piscina); }
+
+/* ——— Night Swim (dark scenes) ——— */
+.night-swim {
+  background: linear-gradient(180deg, #07242e 0%, #10475c 100%);
+  color: var(--lido);
+}
+.dark-card {
+  background: linear-gradient(var(--ripple), var(--ripple)) padding-box,
+              linear-gradient(180deg, var(--chrome-hi), var(--chrome-mid), var(--lido)) border-box;
+  border: 1.5px solid transparent;
+  border-radius: 1.5rem;
+  box-shadow: 6px 6px 0 rgba(111, 214, 207, 0.35);
+}
+.chrome-rule {
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--chrome-hi), var(--chrome-mid), var(--lido));
+}
+.intro-overlay {
+  background: linear-gradient(180deg, #07242e, #10475c);
+  color: var(--lido);
 }
 
-/* ——— Text fill wipe (manifesto) ——— */
-.fill-line { position: relative; display: block; }
-.fill-line .ghost {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(35, 24, 15, 0.28);
+/* ——— Motifs ——— */
+/* Waterline divider — marine over piscina, light refracting on the pool surface */
+.squiggle {
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='16' viewBox='0 0 80 16'%3E%3Cpath d='M0 6 Q 20 0 40 6 T 80 6' fill='none' stroke='%230c3a4a' stroke-width='2.5'/%3E%3Cpath d='M0 11 Q 20 5 40 11 T 80 11' fill='none' stroke='%236fd6cf' stroke-width='2.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
 }
-.fill-line .solid {
-  position: absolute;
-  inset: 0;
-  clip-path: inset(0 100% 0 0);
-  color: var(--ink);
-}
-
-/* ——— Curtain image reveals ——— */
-.curtain-wrap { position: relative; overflow: hidden; }
-.curtain {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+.squiggle-dark {
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='16' viewBox='0 0 80 16'%3E%3Cpath d='M0 6 Q 20 0 40 6 T 80 6' fill='none' stroke='%236fd6cf' stroke-width='2.5'/%3E%3Cpath d='M0 11 Q 20 5 40 11 T 80 11' fill='none' stroke='%23eef7f4' stroke-opacity='0.25' stroke-width='2.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
 }
 
-/* ——— Ghost dish name behind horizontal cards ——— */
-.ghost-dish {
-  position: absolute;
-  inset-inline: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  pointer-events: none;
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 244, 228, 0.22);
-  opacity: 0;
-}
-
-/* ——— Sun arc (day scene) ——— */
-.sun-arm {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  transform: rotate(-90deg);
-}
-.sun-arm .sun {
-  position: absolute;
-  left: -14px;
-  top: -14px;
-  font-size: 28px;
-  transform: translateX(calc(var(--arc-r) * -1));
-}
-
-/* ——— 3D tilt cards ——— */
-.tilt-wrap { perspective: 900px; }
-.tilt-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.tilt-card .tilt-pop { transform: translateZ(36px); }
-
-/* Card image window + inner parallax target */
-.card-window { overflow: hidden; }
-.card-window img {
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.tilt-card:hover .card-window img { transform: scale(1.07); }
-
-/* Hover reveal footer inside cards */
-.card-reveal {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.tilt-card:hover .card-reveal { grid-template-rows: 1fr; }
-.card-reveal > div { overflow: hidden; }
-
-/* Rotated circular price badge */
+/* Price badge — "ombrellone roundel" (top-view striped umbrella) */
 .price-badge {
   display: grid;
   place-items: center;
   width: 4.4rem;
   height: 4.4rem;
   border-radius: 999px;
-  border: 2.5px solid var(--ink);
-  background: var(--butter);
-  font-weight: 800;
-  transform: rotate(10deg);
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2.5px solid var(--marine);
+  background: conic-gradient(
+    var(--piscina) 0 45deg,  var(--lido) 45deg 90deg,
+    var(--piscina) 90deg 135deg, var(--lido) 135deg 180deg,
+    var(--piscina) 180deg 225deg, var(--lido) 225deg 270deg,
+    var(--piscina) 270deg 315deg, var(--lido) 315deg 360deg);
+  transform: rotate(-8deg);
+  box-shadow: 3px 3px 0 var(--piscina);
+  position: relative;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 900;
+  color: var(--marine);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.tilt-card:hover .price-badge { transform: rotate(-6deg) scale(1.1); }
-
-/* Emoji wiggle on craft cards */
-.craft-card .craft-emoji {
-  display: inline-block;
-  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+.price-badge::before {                 /* lido core circle behind the numerals */
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 999px;
+  background: var(--lido);
+  border: 1.5px solid var(--marine);
 }
-.craft-card:hover .craft-emoji { transform: rotate(-12deg) scale(1.25); }
+.price-badge > * { position: relative; z-index: 1; }
+.tilt-card:hover .price-badge { transform: rotate(6deg) scale(1.1); box-shadow: 6px 6px 0 var(--piscina); }
 
-/* ——— Marquee bands ——— */
+/* Spinning badge — "aperitivo porthole" */
+.porthole {
+  border-radius: 999px;
+  border: 2.5px solid var(--marine);
+  background:
+    radial-gradient(circle, var(--lido) 57%, transparent 58%),
+    conic-gradient(var(--chrome-hi), var(--chrome-mid), var(--lido), var(--chrome-mid), var(--chrome-hi));
+}
+.porthole-center {   /* static citrus-slice center, ~40% of badge size */
+  border-radius: 999px;
+  border: 2.5px solid var(--marine);
+  background:
+    radial-gradient(circle, var(--lido) 0 18%, transparent 19%),
+    repeating-conic-gradient(var(--aperol) 0 43deg, var(--lido) 43deg 45deg);
+}
+
+/* Shimmer waterline — under hero headline and section kickers */
+.shimmerline {
+  height: 6px;
+  background: linear-gradient(90deg, var(--piscina), var(--sky), var(--chrome-hi), var(--piscina));
+  background-size: 300% 100%;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer { to { background-position: -300% 0; } }
+
+/* Ghost dish + fill-line strokes */
+.ghost-dish {
+  -webkit-text-stroke: 2px rgba(111, 214, 207, 0.26);
+  color: transparent;
+  font-family: var(--font-display), Georgia, serif;
+}
+.fill-line .ghost { -webkit-text-stroke: 1.5px rgba(12, 58, 74, 0.28); color: transparent; }
+.fill-line .solid { color: var(--ink); }
+
+/* ——— Image treatment — "sun-bleached postcard" ——— */
+.curtain-wrap { position: relative; }
+.curtain-wrap img {
+  filter: saturate(0.88) brightness(1.04) contrast(1.06);
+  transition: filter 0.6s ease;
+}
+.curtain-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(12, 58, 74, 0.14), rgba(111, 214, 207, 0.12));
+  mix-blend-mode: multiply;
+  transition: opacity 0.6s ease;
+}
+.curtain-wrap::before {   /* faint highlight lift */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(191, 230, 238, 0.10);
+  mix-blend-mode: screen;
+}
+/* hover "dive-in": true color returns */
+.curtain-wrap:hover::after { opacity: 0; }
+.curtain-wrap:hover img { filter: saturate(1) brightness(1.02) contrast(1.04); }
+
+/* ——— Gentle motion ——— */
+.rise {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.18s; }
+.rise-3 { animation-delay: 0.3s; }
+.rise-4 { animation-delay: 0.44s; }
+@keyframes rise {
+  to { opacity: 1; transform: none; }
+}
+
+.bob { animation: bob 5s ease-in-out infinite; }
+.bob-late { animation: bob 6s ease-in-out 1.2s infinite; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.spin-slow {
+  animation: spin 26s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ——— Marquee band ——— */
 .marquee { display: flex; overflow: hidden; user-select: none; }
 .marquee-track {
   display: flex;
@@ -202,22 +354,21 @@ body {
   align-items: center;
   justify-content: space-around;
   gap: 2.5rem;
-  animation: marquee 28s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 @keyframes marquee { to { transform: translateX(-100%); } }
 
-/* ——— Spinning circular badge ——— */
-.spin-slow { animation: spin 14s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ——— Squiggle divider ——— */
-.squiggle {
-  height: 12px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 6 Q 10 0 20 6 T 40 6' fill='none' stroke='%2323180f' stroke-width='2.5'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
+/* Awning band surfaces for the marquee (§7.4) */
+.awning-band {
+  background: repeating-linear-gradient(90deg, var(--sky) 0 56px, var(--lido) 56px 112px);
+  border-top: 2.5px solid var(--marine);
+  border-bottom: 2.5px solid var(--marine);
+}
+.awning-band-dark {
+  background: var(--abyss);
 }
 
-/* ——— CSS reveals for inner pages (no GSAP needed there) ——— */
+/* ——— Scroll reveals (IntersectionObserver adds .reveal-shown) ——— */
 .reveal {
   opacity: 0;
   transform: translateY(26px);
@@ -226,28 +377,20 @@ body {
 }
 .reveal-shown { opacity: 1; transform: none; }
 
-.word {
-  transform: translateY(110%);
-  opacity: 0;
-  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
-  white-space: pre-wrap;
-}
-.word-shown { transform: translateY(0); opacity: 1; }
-
+/* ——— Menu dotted leaders ——— */
 .dotted-leader {
   flex: 1;
-  border-bottom: 3px dotted rgba(35, 24, 15, 0.35);
+  border-bottom: 3px dotted rgba(12, 58, 74, 0.35);
   margin: 0 0.75rem;
   transform: translateY(-6px);
 }
 
 /* ——— Reduced motion ——— */
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-  .spin-slow { animation: none; }
+  .marquee-track, .spin-slow, .bob, .bob-late { animation: none; }
+  .rise { animation: none; opacity: 1; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .word { transform: none; opacity: 1; transition: none; }
-  .sticker, .pill-btn { transition: none; }
-  .card-window img, .card-reveal, .price-badge, .craft-emoji { transition: none; }
-  .card-reveal { grid-template-rows: 1fr; }
+  .btn, .card-soft { transition: none; }
+  .shimmerline { animation: none; }
+  .sticker, .pill-btn, .price-badge { transition: none; }
 }

@@ -1,7 +1,7 @@
 [
   {
     "category": "Coffee",
-    "note": "Single-origin, roasted in-house every Tuesday",
+    "note": "Single-origin, roasted in-house every Tuesday — ask for it freddo",
     "items": [
       { "name": "Espresso", "description": "Chikmagalur washed arabica, chocolate & orange peel", "price": 180 },
       { "name": "Flat White", "description": "Double ristretto, silk-steamed milk", "price": 240 },
@@ -12,7 +12,7 @@
   },
   {
     "category": "Morning",
-    "note": "Served till noon",
+    "note": "Served till noon — first-swim hours",
     "items": [
       { "name": "Miso Butter Eggs", "description": "Soft scramble, house sourdough, chives", "price": 420 },
       { "name": "Ricotta Hotcakes", "description": "Burnt honey, seasonal fruit, mascarpone", "price": 460 },
@@ -21,8 +21,51 @@
     ]
   },
   {
+    "category": "Eggs",
+    "note": "Served till noon, hashbrowns non-negotiable",
+    "items": [
+      { "name": "Two Eggs, Any Style", "description": "Hashbrowns, toast, bacon or Goan chorizo", "price": 380 },
+      { "name": "Benedict on the Lido", "description": "Poached eggs, feni-cured ham, hollandaise, muffin", "price": 480 },
+      { "name": "Black Stone", "description": "Poached eggs, tomato confit, hollandaise, crisp hashbrowns", "price": 440 },
+      { "name": "Breakfast Bun", "description": "Soft milk bun, fried egg, cheddar, choice of meat", "price": 280 },
+      { "name": "Egg & Biscuit Stack", "description": "Buttermilk biscuit, two eggs, cheddar, breakfast meat", "price": 360 },
+      { "name": "Think Light", "description": "One egg, one toast, black coffee on the side", "price": 190 }
+    ]
+  },
+  {
+    "category": "Omelettes",
+    "note": "Two or three eggs, folded at the pass",
+    "items": [
+      { "name": "Ham & Hollandaise", "description": "Smoked ham, cheddar, hollandaise, small hashbrown", "price": 440 },
+      { "name": "The Works", "description": "Sausage, bacon, onion, green pepper, cheddar", "price": 480 },
+      { "name": "Garden Veg", "description": "Mushroom, pepper, onion, tomato, cheddar", "price": 400 },
+      { "name": "Bacon Tomato Cheddar", "description": "Smoked bacon, vine tomato, aged cheddar", "price": 420 },
+      { "name": "Denver", "description": "Ham, bell pepper, onion, tomato, cheddar", "price": 440 },
+      { "name": "Mexicana", "description": "Pepper, red onion, salsa, avocado, jalapeño, sour cream", "price": 460 }
+    ]
+  },
+  {
+    "category": "Sides",
+    "note": "For sharing, or not",
+    "items": [
+      { "name": "Sea Salt Fries", "description": "Twice-fried, flaky salt", "price": 220 },
+      { "name": "Harbour Poutine", "description": "Fries, cheese curds, slow-built gravy", "price": 340 },
+      { "name": "Popcorn Chicken Poutine", "description": "Crisp popcorn chicken over harbour poutine", "price": 420 }
+    ]
+  },
+  {
+    "category": "Bowls",
+    "note": "Rice or greens, market vegetables, your call",
+    "items": [
+      { "name": "Grilled Chicken Bowl", "description": "Edamame, corn, cucumber, pickled onion", "price": 420 },
+      { "name": "Crispy Falafel Bowl", "description": "Tahini, market vegetables, herb oil", "price": 360 },
+      { "name": "Pulled Beef Bowl", "description": "Slow-cooked beef, charred onion, chilli oil", "price": 460 },
+      { "name": "Pulled Pork Bowl", "description": "Kokum glaze, pickled cabbage, sesame", "price": 480 }
+    ]
+  },
+  {
     "category": "Plates",
-    "note": "Noon onwards",
+    "note": "Noon onwards, poolside",
     "items": [
       { "name": "Burrata & Peaches", "description": "Basil oil, aged balsamic, grilled ciabatta", "price": 560 },
       { "name": "Goan Prawn Orzo", "description": "Rechado butter, cherry tomatoes, lemon crumb", "price": 640 },
@@ -32,8 +75,72 @@
     ]
   },
   {
+    "category": "Starters",
+    "note": "Small plates before the curry arrives",
+    "items": [
+      { "name": "Veg Samosa", "description": "Spiced potato & pea, tamarind chutney", "price": 220 },
+      { "name": "Onion Rings", "description": "Battered, fried gold, chilli mayo", "price": 240 },
+      { "name": "Chicken Tikka", "description": "Yoghurt & ginger marinade, char-grilled", "price": 380 },
+      { "name": "Tandoori Chicken", "description": "Whole spice rub, clay-oven smoke, mint yoghurt", "price": 480 },
+      { "name": "Chicken Korma Poutine", "description": "Fries, cheese curds, mild korma gravy", "price": 360 },
+      { "name": "Butter Chicken Poutine", "description": "Fries, cheese curds, tomato-butter gravy, tender chicken", "price": 380 }
+    ]
+  },
+  {
+    "category": "Burrito",
+    "note": "Spanish rice, drunken beans, rolled big",
+    "items": [
+      { "name": "Chicken Burrito", "description": "Chorizo, cotija cheese, baja sauce, tortilla chips", "price": 420 },
+      { "name": "Beef Burrito", "description": "Chorizo, cotija cheese, baja sauce, tortilla chips", "price": 440 },
+      { "name": "Pork Burrito", "description": "Chorizo, cotija cheese, baja sauce, tortilla chips", "price": 420 },
+      { "name": "Veg Delight Burrito", "description": "Falafel, chorizo, cotija cheese, baja sauce", "price": 380 }
+    ]
+  },
+  {
+    "category": "Wraps & Donair",
+    "note": "Rolled tight, eaten on the move",
+    "items": [
+      { "name": "Beef Donair", "description": "Spiced beef, garden salad, tzatziki, soft tortilla", "price": 380 },
+      { "name": "Chicken Donair", "description": "Seasoned chicken, garden salad, tzatziki", "price": 360 },
+      { "name": "Chicken & Beef Donair", "description": "Both meats, garden salad, tzatziki", "price": 400 },
+      { "name": "Paneer Wrap", "description": "Grilled paneer, peppers, onion, tzatziki", "price": 340 },
+      { "name": "Chicken Tikka Wrap", "description": "Tandoor-charred chicken, onion, lemon", "price": 360 },
+      { "name": "Chicken Tandoori Wrap", "description": "Tandoori-marinated chicken, fresh veg, tzatziki", "price": 380 }
+    ]
+  },
+  {
+    "category": "Rice",
+    "note": "Steamed, spiced, or both",
+    "items": [
+      { "name": "Basmati Rice", "description": "Long grain, aromatic, steamed plain", "price": 180 },
+      { "name": "Egg Rice", "description": "Wok-tossed rice, egg, light spice", "price": 260 },
+      { "name": "Chicken Tikka Fried Rice", "description": "Tandoor chicken, vegetables, soy, spice", "price": 380 },
+      { "name": "Chicken Shahi Biryani", "description": "Layered basmati, saffron, slow-cooked chicken", "price": 440 }
+    ]
+  },
+  {
+    "category": "Curry",
+    "note": "Simmered low, served with rice or naan",
+    "items": [
+      { "name": "Veg Curry", "description": "Seasonal vegetables, onion, garlic, ginger, Indian spice", "price": 340 },
+      { "name": "Shahi Paneer", "description": "House paneer, cream, tomato, cashew gravy", "price": 380 },
+      { "name": "Madras Curry", "description": "South Indian style, coconut, chilli heat", "price": 400 },
+      { "name": "Jalfrezi", "description": "Stir-fried with onion, pepper, tomato, quick heat", "price": 400 },
+      { "name": "Butter Chicken", "description": "Tender chicken, buttery tomato gravy, cream", "price": 420 },
+      { "name": "Saag", "description": "Spinach curry, garlic, garam masala", "price": 380 }
+    ]
+  },
+  {
+    "category": "Mithai",
+    "note": "Two bites, all sugar",
+    "items": [
+      { "name": "Gulab Jamun", "description": "Milk dumplings, warm sugar syrup", "price": 240 },
+      { "name": "Ras Malai", "description": "Cottage cheese patties, saffron milk, cardamom", "price": 260 }
+    ]
+  },
+  {
     "category": "Bakery",
-    "note": "Baked at 5 AM, gone by 4 PM",
+    "note": "Baked at 5 AM, gone by 4 PM — dive in early",
     "items": [
       { "name": "Croissant", "description": "72-hour laminated, French butter", "price": 220 },
       { "name": "Pain au Chocolat", "description": "Dark 64% couverture", "price": 260 },
@@ -43,7 +150,7 @@
   },
   {
     "category": "Dessert",
-    "note": "Worth staying for",
+    "note": "Worth staying for the night swim",
     "items": [
       { "name": "Basque Cheesecake", "description": "Burnt top, molten centre", "price": 420 },
       { "name": "Dark Chocolate Tart", "description": "Sea salt, olive oil, crème fraîche", "price": 440 },

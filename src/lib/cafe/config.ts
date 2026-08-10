@@ -2,7 +2,7 @@
 
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "Meridian",
-  tagline: "coffee & kitchen",
+  tagline: "caffè & lido",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   address: "14 Lantern Lane, Assagao, Goa 403507",
   phone: "+91 98220 44770",

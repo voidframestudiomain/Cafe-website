@@ -2,15 +2,8 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-/**
- * Lenis inertia scrolling driven by GSAP's ticker, ScrollTrigger synced.
- * Tuned for maximum butter: expo ease, longer duration, touch sync.
- */
+/** Gentle Lenis inertia scrolling. Skipped for reduced-motion users. */
 export default function SmoothScroll({
   children,
 }: {
@@ -20,7 +13,7 @@ export default function SmoothScroll({
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
-      duration: 1.35,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
       smoothWheel: true,
       wheelMultiplier: 0.95,
@@ -28,14 +21,13 @@ export default function SmoothScroll({
       anchors: true,
     });
 
-    lenis.on("scroll", ScrollTrigger.update);
-
-    const tick = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    let raf = requestAnimationFrame(function loop(time) {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
+    });
 
     return () => {
-      gsap.ticker.remove(tick);
+      cancelAnimationFrame(raf);
       lenis.destroy();
     };
   }, []);
