@@ -69,8 +69,8 @@ export default function Footer() {
 
         <div className="chrome-rule mt-6" />
         <div className="mt-0 flex flex-wrap items-center justify-between gap-3 pt-5 text-xs opacity-60">
-          <p>© {new Date().getFullYear()} {siteConfig.name} — made with salt &amp; citrus</p>
-          <p>Assagao, Goa</p>
+          <p>© {new Date().getFullYear()} {siteConfig.name} — made with spice &amp; fire</p>
+          <p>Creston, BC</p>
         </div>
       </div>
     </footer>

@@ -24,8 +24,8 @@
     "category": "Eggs",
     "note": "Served till noon, hashbrowns non-negotiable",
     "items": [
-      { "name": "Two Eggs, Any Style", "description": "Hashbrowns, toast, bacon or Goan chorizo", "price": 380 },
-      { "name": "Benedict on the Lido", "description": "Poached eggs, feni-cured ham, hollandaise, muffin", "price": 480 },
+      { "name": "Two Eggs, Any Style", "description": "Hashbrowns, toast, bacon or smoked chorizo", "price": 380 },
+      { "name": "The Junction Benedict", "description": "Poached eggs, smoked ham, hollandaise, muffin", "price": 480 },
       { "name": "Black Stone", "description": "Poached eggs, tomato confit, hollandaise, crisp hashbrowns", "price": 440 },
       { "name": "Breakfast Bun", "description": "Soft milk bun, fried egg, cheddar, choice of meat", "price": 280 },
       { "name": "Egg & Biscuit Stack", "description": "Buttermilk biscuit, two eggs, cheddar, breakfast meat", "price": 360 },
@@ -65,10 +65,10 @@
   },
   {
     "category": "Plates",
-    "note": "Noon onwards, poolside",
+    "note": "Noon onwards, kitchen's choice",
     "items": [
       { "name": "Burrata & Peaches", "description": "Basil oil, aged balsamic, grilled ciabatta", "price": 560 },
-      { "name": "Goan Prawn Orzo", "description": "Rechado butter, cherry tomatoes, lemon crumb", "price": 640 },
+      { "name": "Chilli Prawn Orzo", "description": "Rechado butter, cherry tomatoes, lemon crumb", "price": 640 },
       { "name": "Mushroom Rigatoni", "description": "Three-mushroom ragù, pecorino, black pepper", "price": 540 },
       { "name": "Slow Pork Belly", "description": "Kokum glaze, burnt apple, mustard greens", "price": 720 },
       { "name": "Charred Cauliflower", "description": "Miso tahini, pickled raisins, almond dukkah", "price": 480 }
@@ -150,7 +150,7 @@
   },
   {
     "category": "Dessert",
-    "note": "Worth staying for the night swim",
+    "note": "Worth saving room for",
     "items": [
       { "name": "Basque Cheesecake", "description": "Burnt top, molten centre", "price": 420 },
       { "name": "Dark Chocolate Tart", "description": "Sea salt, olive oil, crème fraîche", "price": 440 },

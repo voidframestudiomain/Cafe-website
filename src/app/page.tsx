@@ -90,16 +90,16 @@ export default async function HomePage() {
         <Sun className="absolute right-[6%] top-24 h-20 w-20 sm:h-32 sm:w-32" />
 
         <div className="mx-auto max-w-6xl text-center">
-          <p className="label rise">A summer café in Assagao, Goa — est. 2019</p>
+          <p className="label rise">A neighbourhood food junction in Creston, BC — est. 2019</p>
           <h1 className="font-display rise rise-1 mx-auto mt-5 max-w-4xl text-5xl uppercase sm:text-7xl lg:text-8xl">
-            Slow mornings, <em className="accent-italic">golden</em> afternoons
+            Big flavours, <em className="accent-italic">honest</em> plates
             <span className="text-coral">.</span>
           </h1>
           <div className="shimmerline rise rise-2 mx-auto mt-6 w-full max-w-xs rounded-full" />
           <p className="rise rise-2 mx-auto mt-6 max-w-md text-[15px] font-medium leading-relaxed opacity-80">
-            House-roasted coffee, bread from a 5 AM oven, and a kitchen that
-            cooks whatever the market woke up with. Come as you are — leave a
-            little sunnier.
+            House-roasted coffee, bread from a 5 AM oven, and a tandoor that
+            never really cools down. Come as you are — leave a little
+            fuller.
           </p>
           <div className="rise rise-3 mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link href="/menu" className="btn btn-coral">See the menu</Link>
@@ -110,7 +110,7 @@ export default async function HomePage() {
               <div className="curtain-wrap relative aspect-video overflow-hidden rounded-4xl">
                 <Image
                   src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=2400&q=80"
-                  alt="Inside Meridian at golden hour"
+                  alt="Inside Creston's Food Junction at golden hour"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 1024px"
@@ -122,7 +122,7 @@ export default async function HomePage() {
               ☀️ Open today · {siteConfig.hours[0][1]}
             </span>
             <span className="chip bob-late absolute -bottom-4 right-5 sm:right-8">
-              🥭 Mango season is on
+              🫓 The tandoor is going
             </span>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default async function HomePage() {
           <Reveal>
             <p className="label text-center">The place</p>
             <h2 className="font-display mx-auto mt-4 max-w-2xl text-center text-4xl uppercase sm:text-6xl">
-              An old Goan house with <em className="accent-italic">very good light</em>
+              A corner spot with <em className="accent-italic">very good light</em>
             </h2>
           </Reveal>
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
@@ -266,14 +266,14 @@ export default async function HomePage() {
           <div className="night-swim relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] px-6 py-20 text-center sm:rounded-[3rem] sm:py-24">
             <div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-mint/20 blur-2xl" />
             <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-coral/25 blur-2xl" />
-            <p className="label relative text-mint">Night swim · golden hour · aperitivo</p>
+            <p className="label relative text-mint">Weeknights · weekend rush · takeout too</p>
             <h2 className="font-display relative mt-5 text-5xl uppercase sm:text-7xl">
-              Come catch the <em className="accent-italic">sun</em>
+              Come get your <em className="accent-italic">fix</em>
               <span className="text-coral">.</span>
             </h2>
             <p className="relative mx-auto mt-5 max-w-md text-[15px] font-medium leading-relaxed opacity-85">
-              The window seat is first-come. The sorbet changes weekly. The
-              fans are always on.
+              The window seat is first-come. The curry changes by the pot.
+              The tandoor never really stops.
             </p>
             <div className="relative mt-9 flex flex-wrap items-center justify-center gap-4">
               <Link href="/menu" className="btn btn-sun">Read the menu</Link>

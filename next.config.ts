@@ -33,15 +33,17 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
   async headers() {
-    return [
-      { source: "/(.*)", headers: securityHeaders },
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-    ];
+    const staticCacheHeaders = isDev
+      ? []
+      : [
+          {
+            source: "/_next/static/(.*)",
+            headers: [
+              { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+            ],
+          },
+        ];
+    return [{ source: "/(.*)", headers: securityHeaders }, ...staticCacheHeaders];
   },
 };
 

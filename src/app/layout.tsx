@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "House-roasted coffee, espresso freddo, and long poolside afternoons in Assagao, Goa. Open all summer — cold espresso, colder water.",
+    "Samosas, donair, curry, and comfort food done properly in Creston, BC. From tandoori chicken to Basque cheesecake — one kitchen, no rules.",
   openGraph: { siteName: siteConfig.name, type: "website" },
   robots: { index: true, follow: true },
 };

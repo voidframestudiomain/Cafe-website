@@ -12,7 +12,7 @@ export default function VisitPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-28 pt-32 sm:px-6 sm:pt-40">
       <p className="label text-center">
-        Come over <span className="opacity-60">41.23° N — 2.11° E</span>
+        Come over <span className="opacity-60">49.09° N — 116.51° W</span>
       </p>
       <h1 className="font-display mt-4 text-center text-5xl uppercase leading-[0.9] sm:text-8xl">
         Follow the smell

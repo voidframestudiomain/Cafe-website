@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Meridian";
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Creston's Food Junction";
 
 const NAV = [
   { href: "/menu", label: "Menu" },

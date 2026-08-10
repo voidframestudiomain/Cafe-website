@@ -1,12 +1,12 @@
 /** Site configuration — resolved from env vars. Rebrand via .env.local only. */
 
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || "Meridian",
-  tagline: "caffè & lido",
+  name: process.env.NEXT_PUBLIC_SITE_NAME || "Creston's Food Junction",
+  tagline: "kitchen & grill",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  address: "14 Lantern Lane, Assagao, Goa 403507",
-  phone: "+91 98220 44770",
-  email: "hello@meridian.example",
+  address: "113 10th Ave N, Creston, BC V0B 1G0",
+  phone: "+1 236-351-2011",
+  email: "hello@crestonsfoodjunction.example",
   hours: [
     ["Mon – Fri", "7:30 — 22:00"],
     ["Saturday", "8:00 — 23:00"],

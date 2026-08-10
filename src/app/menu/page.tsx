@@ -35,7 +35,7 @@ export default async function MenuPage() {
         .ledger-row:hover .price-chip { transform: translateY(-2px); background: var(--limoncello); color: var(--marine); }
       `}</style>
       <p className="label text-center">
-        The menu <span className="opacity-60">41.23° N — 2.11° E</span>
+        The menu <span className="opacity-60">49.09° N — 116.51° W</span>
       </p>
       <h1 className="font-display mt-4 text-center text-5xl uppercase leading-[0.9] sm:text-8xl">
         Short on
