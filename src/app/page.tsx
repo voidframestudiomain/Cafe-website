@@ -23,8 +23,8 @@ const TICKER = [
 ];
 
 const CRAFT = [
-  { emoji: "☀️", title: "Roast", desc: "Single-estate beans, roasted in small batches every Tuesday.", bg: "bg-peach" },
-  { emoji: "🥐", title: "Bake", desc: "72-hour croissants out of a 5 AM oven — usually gone by four.", bg: "bg-sun/60" },
+  { emoji: "🫘", title: "Roast", desc: "Single-estate beans, roasted in small batches every Tuesday.", bg: "bg-peach" },
+  { emoji: "🥐", title: "Bake", desc: "72-hour croissants out of a 5 AM oven — usually gone by four.", bg: "bg-coral/20" },
   { emoji: "🍉", title: "Cook", desc: "A short, sunny menu the morning market writes for us.", bg: "bg-mint/70" },
   { emoji: "🧊", title: "Chill", desc: "Cold brew, iced teas and sorbet for the hottest hours.", bg: "bg-sky/80" },
 ];
@@ -34,29 +34,6 @@ const ROOM = [
   { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1400&q=80", cap: "The counter", rot: "rotate-1" },
   { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80", cap: "The slow bar", rot: "-rotate-1" },
 ];
-
-function Sun({ className = "" }: { className?: string }) {
-  const rays = Array.from({ length: 12 }, (_, i) => (i * 360) / 12);
-  return (
-    <svg viewBox="0 0 100 100" aria-hidden className={className}>
-      <g className="spin-slow" stroke="var(--color-sun)" strokeWidth="4" strokeLinecap="round">
-        {rays.map((a) => {
-          const rad = (a * Math.PI) / 180;
-          return (
-            <line
-              key={a}
-              x1={50 + Math.cos(rad) * 32}
-              y1={50 + Math.sin(rad) * 32}
-              x2={50 + Math.cos(rad) * 44}
-              y2={50 + Math.sin(rad) * 44}
-            />
-          );
-        })}
-      </g>
-      <circle cx="50" cy="50" r="22" fill="var(--color-sun)" />
-    </svg>
-  );
-}
 
 function Ticker() {
   return (
@@ -85,9 +62,9 @@ export default async function HomePage() {
       {/* ————— HERO ————— */}
       <section className="relative overflow-hidden px-4 pb-16 pt-32 sm:px-6 sm:pt-40">
         <div className="absolute inset-0 -z-10 bg-linear-to-b from-sky/70 via-shell to-sand" />
-        <div className="absolute -left-24 -top-24 -z-10 h-72 w-72 rounded-full bg-sun/35 blur-3xl" />
+        <div className="absolute -left-24 -top-24 -z-10 h-72 w-72 rounded-full bg-mint/30 blur-3xl" />
+        <div className="absolute -right-24 -top-16 -z-10 h-72 w-72 rounded-full bg-sky/50 blur-3xl" />
         <div className="absolute -right-20 top-48 -z-10 h-80 w-80 rounded-full bg-coral/20 blur-3xl" />
-        <Sun className="absolute right-[6%] top-24 h-20 w-20 sm:h-32 sm:w-32" />
 
         <div className="mx-auto max-w-6xl text-center">
           <p className="label rise">A neighbourhood food junction in Creston, BC — est. 2019</p>
@@ -119,7 +96,7 @@ export default async function HomePage() {
               </div>
             </div>
             <span className="chip bob absolute -top-4 left-5 sm:left-8">
-              ☀️ Open today · {siteConfig.hours[0][1]}
+              ⛱️ Open today · {siteConfig.hours[0][1]}
             </span>
             <span className="chip bob-late absolute -bottom-4 right-5 sm:right-8">
               🫓 The tandoor is going

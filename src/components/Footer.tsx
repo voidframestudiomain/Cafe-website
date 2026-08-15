@@ -29,7 +29,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-6xl px-4 pb-8 pt-14 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <p className="label text-sun">Find us</p>
+            <p className="label text-mint">Find us</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed opacity-80">
               {siteConfig.address}
             </p>
@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <p className="label text-sun">Hours</p>
+            <p className="label text-mint">Hours</p>
             <ul className="mt-3 space-y-1 text-sm opacity-80">
               {siteConfig.hours.map(([day, time]) => (
                 <li key={day} className="flex max-w-xs justify-between gap-6">
@@ -51,7 +51,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="label text-sun">Wander</p>
+            <p className="label text-mint">Wander</p>
             <ul className="mt-3 space-y-2 text-sm font-bold">
               <li><Link href="/menu" className="transition-colors hover:text-mint">The menu →</Link></li>
               <li><Link href="/visit" className="transition-colors hover:text-mint">Come visit →</Link></li>
@@ -64,7 +64,7 @@ export default function Footer() {
           className="font-display outline-text-dark mt-16 select-none whitespace-nowrap text-center text-[17vw] leading-none sm:text-[12vw]"
         >
           {siteConfig.name}
-          <span className="align-top text-[4vw]">☀</span>
+          <span className="align-top text-[4vw]">✺</span>
         </p>
 
         <div className="chrome-rule mt-6" />
